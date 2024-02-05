@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="utf-8" />
+    <title>משחקים מתוקשבים למכביה</title>
+    <meta name="description" content="games for macabiah" />
+    <meta name="keywords" content="games, macabiah" />
+    <meta name="author" content="Talya, Sapir, Sheli" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link href="styles/reset.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="jScripts/javascript.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <nav>
+            <button id="nav-button" class="btn-mobile" onclick="toggleNav()">
+                <img src="images/nav-icon.svg" alt="ניווט">
+            </button>
+            <ul id="main-nav" class="flex-container-nav hide-mobile">
+                <li><a class="navItem" href="#">דף הבית</a></li>
+                <li><a class="navItem" href="#">אודות הקורס</a></li>
+                <li><a class="navItem" href="#">סילבוס</a></li>
+                <li><a class="navItem" href="#">חומרי העשרה</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section class="header-container">
+                <video class="responsive-video" id="myVideo" autoplay loop muted onplay="updateIcon('pause.svg')" onpause="updateIcon('play.svg')">
+                    <source src="images/video1.mp4" type="video/mp4">
+                </video>
+                <img class="control-icon" src="images/play.svg" alt="Play" onclick="togglePlayPause()">
+                <h1>משחקים מתוקשבים למכביה</h1>
+            </section>
+
+            <div id="favorites-list-container">
+                <h2>משחקים מועדפים:</h2>
+                <ul id="favorites-list"></ul>
+                <p id="empty-message">לא הוספו משחקים מועדפים</p>
+            </div>
+
+            <div id="list-container">
+                <h2>משחקים לפי סוגי ספורט:</h2>
+            </div>
+
+
+            <div class="filter-container">
+                סינון לפי
+                <button class="filter-btn" onclick="filterItems('group', this)">קבוצתי</button>
+                <button class="filter-btn" onclick="filterItems('individual', this)">יחיד</button>
+            </div>
+
+            <div>
+                <ul class="flex-container-subjects">
+                    <li class="squere" data-category="group">
+                        <img src="images/football.svg" />
+                        <p class="textStyle">כדורגל</p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            ענף ספורט בו משתתפות 2 קבוצות שמטרת כל אחת מהן היא הכנסת כדור לתוך שעריה של השנייה.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="individual">
+                        <img src="images/tenis.svg" />
+                        <p class="textStyle">טניס  </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            משחק כדור בין שני שחקנים או 2 זוגות שחקנים. מטרת המשחק לחבוט בכדור אל עבר צדו השני של המגרש.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="group">
+                        <img src="images/basketball.svg" />
+                        <p class="textStyle">כדורסל </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            משחק כדור בין שני שחקנים או 2 זוגות שחקנים. מטרת המשחק לחבוט בכדור אל עבר צדו השני של המגרש
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="individual">
+                        <img src="images/gymnastic.svg" />
+                        <p class="textStyle">התעמלות אמנותית</p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            היא אחד מענפי ההתעמלות. זהו ספורט אולימפי שבו המתחרות (נשים בלבד) מבצעות תרגילים המשלבים תנועות בלט, אקרובטיקה ומחול
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="individual">
+                        <img src="images/badminton.svg" />
+                        <p class="textStyle">בדמינטון  </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            ענף ספורט ממשפחת משחקי הכדור והמחבט, שבו ה"כדור" מורכב מבסיס ונוצות, ונקרא נוֹצִית.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="group">
+                        <img src="images/hokey.svg" />
+                        <p class="textStyle">הוקי קרח  </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            ענף ספורט קבוצתי קצבי ומהיר, אותו משחקים תוך כדי החלקה על קרח, ובאמצעות מקלות ייעודיים בעלי להב מעוקל, המשמשים לחביטת דיסקית עשויה גומי מגופר אל תוך שער הקבוצה היריבה כדי להבקיע אותו.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="group">
+                        <img src="images/regbi.svg" />
+                        <p class="textStyle"> רוגבי  </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            משחק כדור אליפטי קבוצתי, מטרת המשחק לצבור נקודות רב מהקבוצה היריבה על ידי הנחת הכדור במנחת.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="individual">
+                        <img src="images/ski.svg" />
+                        <p class="textStyle">  גלישה </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            תחרות בה מדגימים ביצועים בפרק זמן קצוב וצוות שופטים מחלק ציונים על פי מספר כללים וקטגוריות.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="individual">
+                        <img src="images/golf.svg" />
+                        <p class="textStyle"> גולף  </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            ספורט שבו על השחקן להעיף כדור קטן לאורך מסלול שעיקרו דשא טבעי באמצעות מחבטים ולקלוע במספר מינימלי של חבטות את הכדור לתוך גומה בקרקע שבקצה המסלול.
+                        </span>
+                    </li>
+            
+                    <li class="squere" data-category="individual">
+                        <img src="images/judo.svg" />
+                        <p class="textStyle"> קארטה  </p>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">♡</button>
+                        <span class="paragraphStyle">
+                            אומנות יפנית וספורט לחימה בעלת 7 דרגות לימוד. משלבת מכות ולוחמת ידיים פתוחות, ללא נשק ותוך שימוש בבעיטות, בברכיים ובמרפקי הידיים.
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+           
+
+        </main>
+    </div>
+</body>
+
+</html>
